@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = "Le numéro de compte doit contenir entre 5 et 15 caractères.";
     } elseif ($solde < 10 || $solde > 2000) {
         $error = "Le solde doit être compris entre 10 et 2000.";
-    } elseif (!in_array($typeDeCompte, ['courant', 'epargne', 'entreprise'])) {
+    } elseif (!in_array($typeDeCompte, ['Courant', 'Epargne', 'Entreprise'])) {
         $error = "Type de compte invalide.";
     } else {
         $stmt = $conn->prepare("SELECT * FROM comptebancaire WHERE numeroCompte = ?");
@@ -120,10 +120,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div>
                 <label for="typeDeCompte">Type de compte *</label>
                 <select id="typeDeCompte" name="typeDeCompte" required>
-                    <option value="courant">Courant</option>
-                    <option value="epargne">Épargne</option>
-                    <option value="entreprise">Entreprise</option>
+                    <option value="Courant">Courant</option>
+                    <option value="Epargne">Épargne</option>
+                    <option value="Entreprise">Entreprise</option>
                 </select>
+
             </div>
             <button type="submit">Créer compte</button>
         </form>
@@ -143,10 +144,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
             var typeCompte = document.getElementById('typeDeCompte').value;
-            if (!['courant', 'epargne', 'entreprise'].includes(typeCompte)) {
+            if (!['Courant', 'Epargne', 'Entreprise'].includes(typeCompte)) {
                 alert('Type de compte invalide.');
                 return false;
             }
+
 
             return true;
         }
